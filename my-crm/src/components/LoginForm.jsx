@@ -7,10 +7,17 @@ function LoginForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if(event){
-      console.log(event);
-    }
-  }
+    let transaction = { username: username, password: password };
+    let transactionJson = JSON.stringify(transaction);
+    fetch('http://localhost:3001/userauth', {
+      method: 'Post',
+      body: transactionJson
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .catch((error) => console.error(error));
+    
+  };
 
   return (
     <form onSubmit={handleSubmit} className={styles.container}>
@@ -34,7 +41,9 @@ function LoginForm() {
           onChange={(event) => setPassword(event.target.value)}
         />
       </div>
-      <button type="submit" className={styles.button}>Ingresar</button>
+      <button type="submit" className={styles.button}>
+        Ingresar
+      </button>
     </form>
   );
 }
