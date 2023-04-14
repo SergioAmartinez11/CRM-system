@@ -4,12 +4,14 @@ import styles from '../styles/LoginForm.module.css';
 function LoginForm() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
+  const [lastname, setLastname] = useState('');
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    let transaction = { username: username, password: password };
+    let transaction = {key:'my_key123', username: username, password: password, name:name, lastname:lastname };
     let transactionJson = JSON.stringify(transaction);
-    fetch('http://localhost:3001/userauth', {
+    fetch('http://localhost:3003/userauth', {
       method: 'Post',
       body: transactionJson
     })
@@ -21,6 +23,26 @@ function LoginForm() {
 
   return (
     <form onSubmit={handleSubmit} className={styles.container}>
+      <div className={styles.username}>
+        <label htmlFor="username">Nombre:</label>
+        <input
+          type="text"
+          id="username"
+          value={name}
+          className={styles.input}
+          onChange={(event) => setName(event.target.value)}
+        />
+      </div>
+      <div className={styles.username}>
+        <label htmlFor="username">Apellido:</label>
+        <input
+          type="text"
+          id="username"
+          value={lastname}
+          className={styles.input}
+          onChange={(event) => setLastname(event.target.value)}
+        />
+      </div>
       <div className={styles.username}>
         <label htmlFor="username">Usuario:</label>
         <input
