@@ -9,15 +9,7 @@ function LoginForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    let transaction = {key:'my_key123', username: username, password: password, name:name, lastname:lastname };
-    let transactionJson = JSON.stringify(transaction);
-    fetch('http://localhost:3003/userauth', {
-      method: 'Post',
-      body: transactionJson
-    })
-      .then((response) => response.json())
-      .then((data) => console.log(data))
-      .catch((error) => console.error(error));
+    
     
   };
 
