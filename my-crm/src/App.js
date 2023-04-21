@@ -2,8 +2,8 @@ import React from 'react';
 import './App.css';
 import { Grid } from '@mui/material';
 import { LeftPanel } from './components/LeftPanel';
-import { RightPanel } from './components/RightPanel';
-import { Login } from './pages/Login';
+import { EmployeeForm } from './components/employees/EmployeeForm';
+
 
 function App() {
   return (
@@ -12,8 +12,8 @@ function App() {
         <Grid item xs={3}>
           <LeftPanel/>
         </Grid>
-        <Grid item xs={9} sx={{backgroundColor:'#F9FBFF'}}>
-          <RightPanel/>
+        <Grid item xs={9} sx={{backgroundColor:'#F2EFFF'}} padding={'4rem'}>
+          <EmployeeForm />
         </Grid>
       </Grid>
     

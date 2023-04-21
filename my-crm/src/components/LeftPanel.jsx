@@ -3,24 +3,34 @@ import React, { useState } from 'react';
 import { mainPanelButtons } from '../constants/buttons';
 import styles from '../styles/LeftPanel.module.css';
 import CustomAccordion from './common/CustomAccordion';
+import { Box } from '@mui/material';
 
 
 const employees ={
   header: 'Empleados',
-  options: [{label:'registrar'}, {label:'editar'}, {label:'eliminar'}, {label:'ver todos'}]
+  options: [{label:'Agregar empleado'}, {label:'Administrar'}, {label:'Ver todos'}]
 }
 
 const inventory ={
   header: 'Inventario',
-  options: [{label:'registrar'}, {label:'editar'}, {label:'eliminar'}, {label:'ver todos'}]
+  options: [{label:'Administrar empleados'}, {label:'Ver empleados'}]
 }
 
-export const LeftPanel = () => {
-  const [tabSelected, setTabSelected] = useState(null);
+const marketing ={
+  header: 'Mercadotecnia',
+  options: [{label:'Ver clientes'}]
+}
 
-  const handleTabSelected = (tab) =>{
-    setTabSelected(tab);
-  }
+const config ={
+  header: 'Configuracion',
+  options: [{label:'Cerrar sesion'}]
+}
+
+
+export const LeftPanel = () => {
+  const [tabSelected, setTabSelected] = useState(0);
+
+  
 
   return (
     <>
@@ -34,9 +44,12 @@ export const LeftPanel = () => {
         }}
       >
         <div className={styles.title}>My-CRM</div>
+      
+        
         <CustomAccordion data={employees}/>
         <CustomAccordion data={inventory}/>
-        
+        <CustomAccordion data={marketing}/>
+        <CustomAccordion data={config} />
       </Container>
     </>
   );
