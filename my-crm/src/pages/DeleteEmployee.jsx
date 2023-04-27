@@ -9,36 +9,64 @@ import {
   FormControl,
   InputLabel,
 } from '@mui/material'
-import { useDispatch } from 'react-redux'
-import { getListOfEmployees } from '../redux/actions/employeesList'
-import {getAllemployees} from '../utils/api/employee';
-
-const options = ['Administrador', 'Cajero', 'Marketing', 'Soporte']
+import { useDispatch, useSelector } from 'react-redux'
+import { deleteEmployeeById, getAllEmployees } from '../utils/api/employee'
+import { SimpleTable } from '../components/common/SimpleTable'
 
 // componente para desplegar un form para agregar empleado
 export const DeleteEmployee = () => {
-const dispatch = useDispatch();
-let list = getAllemployees();
+  const [options, setOptions] = useState([]);
+  const [employee, setEmployee] = useState([]);
+  const employeeRedux = useSelector((state) => state.employees);
+  
 
-// useEffect(() =>{
+  useEffect(() => {
+    //setEmployee(lista);
+    let string = [];
+    let response = getAllEmployees()
+    response.then((data) => {
+      data.map((index) => {
+        return string.push(index.name)
+      })
+      setOptions(string)
+    })
+  }, [])
 
-//     let list = getAllEmployees();
-//     console.log(list);
-//     dispatch(getListOfEmployees(list));
-// },[]);
-
-  const [employee, setEmployee] = useState([])
 
   const handleOptionChange = (event) => {
     setEmployee(event.target.value)
   }
 
   const handleSubmit = (event) => {
-    event.preventDefault()
-    // Realizar una petición POST
+    event.preventDefault();
+    console.log(employee);
+    deleteEmployeeById(employee);
   }
+
   return (
     <>
+      {/* <Grid
+        container
+        sx={{
+          backgroundColor: '#ffff',
+          borderRadius: '15px',
+          paddingX: '2rem',
+          paddingY: '2rem',
+        }}
+      >
+        <Grid item xs={12} textAlign={'center'} marginBottom={'1rem'}>
+            <Typography
+              fontSize={'16px'}
+              fontWeight={'bold'}
+              letterSpacing={'2px'}
+            >
+              {'Baja de Empleados'}
+            </Typography>
+    </Grid>
+    <SimpleTable texto={'data'}></SimpleTable>
+    <SimpleTable texto={'data'}></SimpleTable>
+      </Grid> */}
+
       <form onSubmit={handleSubmit} id="sign-up-form">
         <Grid
           container
@@ -75,7 +103,8 @@ let list = getAllemployees();
                 id="select-multiple"
                 value={employee}
                 onChange={handleOptionChange}
-                input={<Input />}
+                //input={<Input />}
+                
               >
                 {options.map((option) => (
                   <MenuItem key={option} value={option}>
@@ -84,6 +113,8 @@ let list = getAllemployees();
                 ))}
               </Select>
             </FormControl>
+            
+
           </Grid>
           <Grid
             item
@@ -97,7 +128,7 @@ let list = getAllemployees();
               variant="contained"
               sx={{ borderRadius: '10px', textTransform: 'none' }}
             >
-              {'Dar de baja'}
+              {'Eliminar empleado'}
             </Button>
           </Grid>
         </Grid>

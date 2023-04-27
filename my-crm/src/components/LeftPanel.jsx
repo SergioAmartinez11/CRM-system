@@ -1,35 +1,38 @@
-import { Container } from '@mui/system';
-import React, { useState } from 'react';
-import { mainPanelButtons } from '../constants/buttons';
-import styles from '../styles/LeftPanel.module.css';
-import CustomAccordion from './common/CustomAccordion';
-import { Box } from '@mui/material';
+import { Container } from '@mui/system'
+import React, { useEffect, useState } from 'react'
+import { mainPanelButtons } from '../constants/buttons'
+import styles from '../styles/LeftPanel.module.css'
+import CustomAccordion from './common/CustomAccordion'
+import { Box } from '@mui/material'
+import { useDispatch, useSelector } from 'react-redux'
+import { getAllemployeesByName } from '../utils/api/employee'
 
-
-const employees ={
+const employees = {
   header: 'Empleados',
-  options: [{label:'Agregar empleado'}, {label:'Administrar'}, {label:'Ver todos'}]
+  options: [
+    { label: 'Agregar empleado' },
+    { label: 'Administrar' },
+    { label: 'Ver todos' },
+  ],
 }
 
-const inventory ={
+const inventory = {
   header: 'Inventario',
-  options: [{label:'Administrar empleados'}, {label:'Ver empleados'}]
+  options: [{ label: 'Administrar empleados' }, { label: 'Ver empleados' }],
 }
 
-const marketing ={
+const marketing = {
   header: 'Mercadotecnia',
-  options: [{label:'Ver clientes'}]
+  options: [{ label: 'Ver clientes' }],
 }
 
-const config ={
+const config = {
   header: 'Configuracion',
-  options: [{label:'Cerrar sesion'}]
+  options: [{ label: 'Cerrar sesion' }],
 }
-
 
 export const LeftPanel = () => {
-  const [tabSelected, setTabSelected] = useState(0);
-
+  const [tabSelected, setTabSelected] = useState(0)
   
 
   return (
@@ -44,13 +47,12 @@ export const LeftPanel = () => {
         }}
       >
         <div className={styles.title}>My-CRM</div>
-      
-        
-        <CustomAccordion data={employees}/>
-        <CustomAccordion data={inventory}/>
-        <CustomAccordion data={marketing}/>
+
+        <CustomAccordion data={employees} />
+        <CustomAccordion data={inventory} />
+        <CustomAccordion data={marketing} />
         <CustomAccordion data={config} />
       </Container>
     </>
-  );
-};
+  )
+}
