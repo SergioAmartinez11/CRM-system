@@ -2,18 +2,19 @@ import { createSlice } from "@reduxjs/toolkit";
 
 
 const initialState = {
-    stepperToggle : false,
+    stepper : 0,
 }
 
 export const commonSlice = createSlice({
     name: 'common',
     initialState,
     reducers:{
-        toggleSteper: (state, action) => {
-            state.stepperToggle = !state.stepperToggle;
+        stepState: (state, action) => {
+            const {activeStep} = action.payload;
+            state.stepper = activeStep;
         }
     }
 })
 
-export const {toggleSteper} = commonSlice.actions;
+export const {stepState} = commonSlice.actions;
 export default commonSlice.reducer;

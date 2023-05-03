@@ -17,10 +17,11 @@ export const productSlice = createSlice({
   reducers: {
     addProduct: (state, action) => {
       const { name, description, category, price } = action.payload
-      state.name = name
-      state.description = description
-      state.category = category
-      state.price = price
+      state.name = name;
+      state.description = description;
+      state.category = category;
+      state.price = price;
+      
     },
     addProvider: (state, action) => {
       const { provider, address, email, phone } = action.payload

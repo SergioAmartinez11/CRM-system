@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { TextField, Select, MenuItem, Button } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { addProduct } from '../../redux/productsSlice';
@@ -16,6 +16,7 @@ function ProductForm() {
   const [category, setCategory] = useState('');
   const [price, setPrice] = useState('');
   const dispatch = useDispatch();
+  const {stepper} = useSelector((state) => state.common);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -23,6 +24,16 @@ function ProductForm() {
     //console.log({ name, description, category, price });
     dispatch(addProduct({name,description,category,price}));
   };
+  
+
+  useEffect(() =>{
+    console.log(stepper);
+      if(stepper === 1)
+      {
+        console.log('send', {name,description,category,price});
+      }
+
+  },[stepper]);
 
   return (
     <form onSubmit={handleSubmit}>

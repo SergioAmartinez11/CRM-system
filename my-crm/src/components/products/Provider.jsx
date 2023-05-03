@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { TextField, Button } from '@mui/material'
 import { useDispatch, useSelector } from 'react-redux'
 import { addProduct, addProvider } from '../../redux/productsSlice'
@@ -9,13 +9,22 @@ function ProviderForm() {
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
   const dispatch = useDispatch()
+  const { stepper } = useSelector((state) => state.common)
 
+  //console.log(stepper);
   const handleSubmit = (e) => {
     e.preventDefault()
     // Aquí puedes enviar los datos del formulario al servidor
     //console.log();
-    dispatch(addProvider({ provider, address, email, phone }))
   }
+
+  useEffect(() => {
+    // dispatch(addProvider({ provider, address, email, phone }))
+    console.log(stepper);
+    if (stepper === 2) {
+      console.log('send', { provider, address, email, phone })
+    }
+  }, [stepper])
 
   return (
     <form onSubmit={handleSubmit}>
@@ -57,9 +66,9 @@ function ProviderForm() {
         margin="normal"
       />
 
-      <Button type="submit" variant="contained" color="primary">
+      {/* <Button type="submit" variant="contained" color="primary">
         Enviar
-      </Button>
+      </Button> */}
     </form>
   )
 }
