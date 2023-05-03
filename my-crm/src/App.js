@@ -4,10 +4,10 @@ import { Grid, Box } from '@mui/material'
 import { LeftPanel } from './components/LeftPanel'
 import { EmployeeForm } from './pages/EmployeeForm'
 import { DeleteEmployee } from './pages/DeleteEmployee'
+import Steper from './components/products/Steper';
 
 function App() {
   return (
-    // <Login/> <EmployeeForm />
     <Grid container spacing={0} xs={12} minHeight={'100vh'}>
       <Grid item xs={3}>
         <LeftPanel />
@@ -22,11 +22,13 @@ function App() {
         justifyContent={'space-between'}
       >
         <Box sx={{marginBottom:'1rem'}}>
-        <EmployeeForm />
+        {/* <EmployeeForm /> */}
+        <Steper/>
         </Box>
-        <DeleteEmployee />
+        {/* <DeleteEmployee /> */}
       </Grid>
     </Grid>
+    // <Layout/>
   )
 }
 
