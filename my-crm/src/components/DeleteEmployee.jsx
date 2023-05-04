@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import {
   MenuItem,
   Button,
-  Input,
   Select,
   Grid,
   Typography,
@@ -11,7 +10,6 @@ import {
 } from '@mui/material'
 import { useDispatch, useSelector } from 'react-redux'
 import { deleteEmployeeById, getAllEmployees } from '../utils/api/employee'
-import { SimpleTable } from '../components/common/SimpleTable'
 
 // componente para desplegar un form para agregar empleado
 export const DeleteEmployee = () => {
