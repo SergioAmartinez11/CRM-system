@@ -1,10 +1,11 @@
-import React from 'react';
-import { Grid } from '@mui/material';
-import LoginForm from './LoginForm';
+import { Grid } from '@mui/material'
+import LoginForm from '../components/login/LoginForm'
+
 
 export const Login = () => {
   return (
     <>
+    
       <Grid
         container
         maxWidth={'100%'}
@@ -12,12 +13,18 @@ export const Login = () => {
         justifyContent={'center'}
         sx={{ backgroundColor: '#fff' }}
       >
-        <Grid item xs={12} justifyContent={'center'} display={'flex'} padding={'3rem'}>
+        <Grid
+          item
+          xs={12}
+          justifyContent={'center'}
+          display={'flex'}
+          padding={'3rem'}
+        >
           <img
-            src="/uabc_logo.png"
-            alt="uabc logo"
-            width={'150px'}
-            height={'220px'}
+            src="/crm.png"
+            alt="crm"
+            width={'250px'}
+            height={'250px'}
           />
         </Grid>
         <Grid item xs={12}>
@@ -25,5 +32,5 @@ export const Login = () => {
         </Grid>
       </Grid>
     </>
-  );
-};
+  )
+}
