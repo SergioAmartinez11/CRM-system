@@ -2,19 +2,18 @@ export const employees = {
   header: 'Empleados',
   options: [
     { label: 'Agregar empleado' },
-    { label: 'Administrar' },
-    { label: 'Ver todos' },
+    { label: 'Tabla de empleados' },
   ],
 }
 
 export const inventory = {
   header: 'Inventario',
-  options: [{ label: 'Administrar empleados' }, { label: 'Ver empleados' }],
+  options: [{ label: 'Agregar producto' }, { label: 'Tabla de inventario' }],
 }
 
 export const marketing = {
   header: 'Mercadotecnia',
-  options: [{ label: 'Ver clientes' }],
+  options: [{label:'Agregar cliente'},{ label: 'Tabla de clientes' }],
 }
 
 export const config = {

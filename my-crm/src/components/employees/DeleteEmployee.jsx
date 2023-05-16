@@ -9,7 +9,7 @@ import {
   InputLabel,
 } from '@mui/material'
 import { useDispatch, useSelector } from 'react-redux'
-import { deleteEmployeeById, getAllEmployees } from '../utils/api/employee'
+import { deleteEmployeeById, getAllEmployees } from '../../utils/api/employee'
 
 // componente para desplegar un form para agregar empleado
 export const DeleteEmployee = () => {

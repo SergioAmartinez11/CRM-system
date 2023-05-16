@@ -2,36 +2,31 @@ import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { login, logout } from '../../redux/authSlice'
 import styles from '../../styles/LoginForm.module.css'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'
 
 function LoginForm() {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated)
+  
   const error = useSelector((state) => state.auth.error)
   const token = useSelector((state) => state.auth.token)
   const dispatch = useDispatch()
-  const navigate = useNavigate();
-
+  const navigate = useNavigate()
 
   const handleSubmit = (event) => {
     event.preventDefault()
     const username = event.target.username.value
     const password = event.target.password.value
     dispatch(login(username, password))
-
-  
   }
 
-  const handleAccess = () =>
-  {
-    navigate('/Dashboard');
+  const handleAccess = () => {
+    navigate('/Dashboard')
   }
 
   if (token) {
     //Usuario loggeado correctamente
-    handleAccess();
-    
+    handleAccess()
   } else {
     return (
       <form onSubmit={handleSubmit} className={styles.container}>
