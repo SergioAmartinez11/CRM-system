@@ -35,23 +35,40 @@
     justify-content: center;
 }
 
-.button{
-    margin-top: 1rem !important;
-    margin-bottom: 1rem !important;
-    background-color: white !important;
-    color: #5932EA !important;
-    border-radius: 8px !important;
-    text-transform: none !important;
+@keyframes pulseAnimation {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  .button {
+    background-color: #ff5f6d;
+    color: #fff;
+    font-size: 1rem;
+    margin-top: 1rem;
+    padding: 10px 20px;
     border: none;
-    width: 100px;
-    font-size: large;
-    font-weight: 300;
-    padding: 0.5rem;
-}
+    border-radius: 5px;
+    cursor: pointer;
+    animation: pulseAnimation 2s infinite;
+  }
 
-.button:hover{
-    background-color: #5932EA !important; 
-    color: white !important;
-    border-radius: 8px !important;
-    border: none;
-}
+  .button:hover {
+    background-color: #ff3e4d;
+  }
+  
+  .button:focus {
+    outline: none;
+  }
+  
+  .button:active {
+    transform: scale(0.95);
+  }
+  
+  

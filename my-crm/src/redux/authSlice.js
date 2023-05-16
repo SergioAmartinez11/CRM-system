@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
-import { useNavigate } from 'react-router'
+
 
 const baseURL = 'http://localhost:3003'
 
@@ -42,7 +42,9 @@ export const login = (username, password) => async (dispatch) => {
     const { token } = response.data
     dispatch(loginSuccess({ token }))
   } catch (error) {
-    dispatch(loginFailure(error.message))
+    dispatch(loginFailure(error.code))
+
+    
   }
 }
 

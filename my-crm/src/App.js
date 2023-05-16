@@ -2,19 +2,25 @@ import React, { useEffect } from 'react'
 import './App.css'
 import { Login } from './pages/Login'
 import { Dashboard } from './pages/Dashboard'
-import { Routes, Route } from 'react-router'
-import { useSelector, useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router'
+import { Routes, Route, Navigate } from 'react-router'
+import { useDispatch, useSelector } from 'react-redux'
+
 
 function App() {
-  
-  
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated)
+
 
   return (
     <>
       <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route
+          path="/"
+          element={isAuthenticated ? <Navigate to="/Dashboard" /> : <Login />}
+        />
+        <Route
+          path="/Dashboard"
+          element={isAuthenticated ? <Dashboard /> : <Navigate to="/" />}
+        />
       </Routes>
     </>
   )

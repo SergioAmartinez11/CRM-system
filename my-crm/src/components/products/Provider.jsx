@@ -11,7 +11,6 @@ function ProviderForm() {
   const dispatch = useDispatch()
   const { stepper } = useSelector((state) => state.common)
 
-  //console.log(stepper);
   const handleSubmit = (e) => {
     e.preventDefault()
     // Aquí puedes enviar los datos del formulario al servidor
@@ -20,7 +19,6 @@ function ProviderForm() {
 
   useEffect(() => {
     // dispatch(addProvider({ provider, address, email, phone }))
-    console.log(stepper);
     if (stepper === 2) {
       console.log('send', { provider, address, email, phone })
     }

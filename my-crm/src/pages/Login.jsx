@@ -1,33 +1,38 @@
-import { Grid } from '@mui/material'
+import { Grid, Typography } from '@mui/material'
 import LoginForm from '../components/login/LoginForm'
-
+import SvgBanner from '../components/svg/SvgBanner'
+import React, { useEffect } from 'react'
 
 export const Login = () => {
+
+ 
   return (
     <>
-    
+      <SvgBanner width="100%" height="40vh" />
       <Grid
         container
-        maxWidth={'100%'}
+        width={'100%'}
+        position={'fixed'}
+        top={'40vh'}
         display={'flex'}
         justifyContent={'center'}
-        sx={{ backgroundColor: '#fff' }}
+        flexDirection={'column'}
       >
-        <Grid
-          item
-          xs={12}
-          justifyContent={'center'}
-          display={'flex'}
-          padding={'3rem'}
-        >
-          <img
-            src="/crm.png"
-            alt="crm"
-            width={'250px'}
-            height={'250px'}
-          />
-        </Grid>
         <Grid item xs={12}>
+          <Typography
+            sx={{
+              background: 'linear-gradient(to right, #8ED1FC, #F78DA7)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              fontSize: '26px',
+              fontWeight: 'bold',
+              textAlign: 'center',
+              letterSpacing: '2px',
+              marginBottom: '3rem',
+            }}
+          >
+            {'MY-CRM'}
+          </Typography>
           <LoginForm />
         </Grid>
       </Grid>
