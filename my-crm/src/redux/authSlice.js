@@ -1,7 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
 
-
 const baseURL = 'http://localhost:3003'
 
 const authSlice = createSlice({
@@ -43,8 +42,6 @@ export const login = (username, password) => async (dispatch) => {
     dispatch(loginSuccess({ token }))
   } catch (error) {
     dispatch(loginFailure(error.code))
-
-    
   }
 }
 

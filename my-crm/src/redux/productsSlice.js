@@ -1,28 +1,32 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { getProducts } from '../utils/api/product'
 
 const initialState = {
-  sku:'',
-  item_name: '',
-  description:'',
-  quantity:'',
-  price:'',
-  created_by:'',
-  
+  productList: [],
 }
 
 export const productSlice = createSlice({
   name: 'products',
   initialState,
   reducers: {
-    addProduct: (state, action) => {
-      const { sku, item_name, description, quantity, price, created_by } = action.payload
-      
-      
+    storeProductList: (state, action) => {
+      const {newList} = action.payload;
+      state.productList = newList
     },
-    
   },
 })
 
-export const { addProduct } = productSlice.actions
+export const { addProduct, storeProductList } = productSlice.actions
+
+export const fetchAllProducts = () => async (dispatch) => {
+  try {
+    const list = await getProducts()
+    let newList = list.reverse()
+    dispatch(storeProductList({ newList }))
+  } catch (error) {
+    //dispatch(loginFailure(error.code))
+    console.log(error)
+  }
+}
 
 export default productSlice.reducer

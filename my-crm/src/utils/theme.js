@@ -3,7 +3,7 @@ import { createTheme } from '@mui/material'
 const theme = createTheme({
   breakpoints: {
     keys: ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'],
-    values: { xs: 0, sm: 600, md: 900, lg: 1440, xl: 1536, xxl: 1600 },
+    values: { xs: 0, sm: 600, md: 900, lg: 1400, xl: 1536, xxl: 1600 },
   },
   typography: {
     gradientText: {
@@ -23,6 +23,8 @@ const theme = createTheme({
     secondary: {
       main: '#ffff',
       black: '#000',
+      gray: '#808080',
+      lightGray: '#eaeaea'
     },
   },
 })

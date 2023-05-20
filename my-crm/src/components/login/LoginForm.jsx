@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { login, logout } from '../../redux/authSlice'
+import { login } from '../../redux/authSlice'
 import styles from '../../styles/LoginForm.module.css'
 import { useNavigate } from 'react-router-dom'
 
@@ -8,7 +8,7 @@ function LoginForm() {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   
-  const error = useSelector((state) => state.auth.error)
+  //const error = useSelector((state) => state.auth.error)
   const token = useSelector((state) => state.auth.token)
   const dispatch = useDispatch()
   const navigate = useNavigate()
