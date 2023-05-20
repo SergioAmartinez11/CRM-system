@@ -1,9 +1,14 @@
 import React, { useState } from 'react'
-import { TextField, Button, Select, MenuItem, Grid } from '@mui/material'
+import {
+  TextField,
+  Button,
+  Select,
+  MenuItem,
+  Grid,
+  Typography,
+} from '@mui/material'
 import InputMask from 'react-input-mask'
-import theme from '../../utils/theme'
 import { createEmploye } from '../../utils/api/employee'
-import { fetchAllEmployees } from '../../redux/employeeSlice'
 
 export const EmployeeForm = () => {
   const [formData, setFormData] = useState({
@@ -28,11 +33,29 @@ export const EmployeeForm = () => {
       [name]: value,
     }))
   }
+  const reload = () => {
+    // eslint-disable-next-line no-restricted-globals
+    location.reload()
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    createEmploye(formData);
-    fetchAllEmployees()
+    createEmploye(formData)
+    setFormData({
+      id: '',
+      first_name: '',
+      last_name: '',
+      email: '',
+      phone_number: '',
+      address: '',
+      city: '',
+      state: '',
+      postal_code: '',
+      birthday: '',
+      country: '',
+      role: '',
+    })
+    reload()
   }
 
   return (
@@ -42,14 +65,16 @@ export const EmployeeForm = () => {
         columnSpacing={1}
         sx={{
           backgroundColor: '#fff',
-          borderRadius: '15px',
+          borderRadius: '5px',
           boxShadow: 3,
           padding: '2rem',
-          maxWidth: theme.breakpoints.values.sm,
+          //maxWidth: theme.breakpoints.values.sm,
         }}
       >
-        <Grid item xs={12}>
-          {/* <DragAndDrop /> */}
+        <Grid item xs={12} textAlign={'center'}>
+          <Typography fontWeight={'bold'} fontSize={'20px'}>
+            AGREGAR EMPLEADO
+          </Typography>
         </Grid>
         <Grid item xs={6}>
           <TextField
@@ -240,124 +265,6 @@ export const EmployeeForm = () => {
         </Grid>
       </Grid>
     </form>
-    // <form onSubmit={handleSubmit}>
-    //   <Grid
-    //     container
-    //     sx={{
-    //       backgroundColor: '#fff',
-    //       padding: '3rem',
-    //       boxShadow: 3,
-    //       borderRadius: '10px',
-    //     }}
-    //   >
-    //     {/* <Grid item xs={6}> */}
-    //       <TextField
-    //         sx={{marginX:'10px'}}
-    //         label="ID"
-    //         name="id"
-    //         value={formData.id}
-    //         onChange={handleChange}
-    //         margin="normal"
-    //       />
-    //       <TextField
-    //       sx={{marginX:'10px'}}
-    //         label="First Name"
-    //         name="first_name"
-    //         value={formData.first_name}
-    //         onChange={handleChange}
-    //         margin="normal"
-    //       />
-    //       <TextField
-    //       sx={{marginX:'10px'}}
-    //         label="Last Name"
-    //         name="last_name"
-    //         value={formData.last_name}
-    //         onChange={handleChange}
-    //         margin="normal"
-    //       />
-    //       <TextField
-    //       sx={{marginX:'10px'}}
-    //         label="Email"
-    //         name="email"
-    //         value={formData.email}
-    //         onChange={handleChange}
-    //         margin="normal"
-    //       />
-    //       <TextField
-    //       sx={{marginX:'10px'}}
-    //         label="Phone Number"
-    //         name="phone_number"
-    //         value={formData.phone_number}
-    //         onChange={handleChange}
-    //         margin="normal"
-    //       />
-    //     {/* </Grid>
-    //     <Grid item xs={6}> */}
-    //       <TextField
-    //       sx={{marginX:'10px'}}
-    //         label="Address"
-    //         name="address"
-    //         value={formData.address}
-    //         onChange={handleChange}
-    //         margin="normal"
-    //       />
-    //       <TextField
-    //       sx={{marginX:'10px'}}
-    //         label="City"
-    //         name="city"
-    //         value={formData.city}
-    //         onChange={handleChange}
-    //         margin="normal"
-    //       />
-    //       <TextField
-    //       sx={{marginX:'10px'}}
-    //         label="Postal Code"
-    //         name="postal_code"
-    //         value={formData.postal_code}
-    //         onChange={handleChange}
-    //         margin="normal"
-    //       />
-    //       <Select
-    //       sx={{marginX:'10px'}}
-    //         label="Country"
-    //         name="country"
-    //         value={formData.country}
-    //         onChange={handleChange}
-    //         margin="normal"
-    //       >
-    //         <MenuItem value="USA">USA</MenuItem>
-    //         <MenuItem value="Canada">Canada</MenuItem>
-    //         <MenuItem value="Mexico">Mexico</MenuItem>
-    //       </Select>
-
-    //       <Select
-    //       sx={{marginX:'10px'}}
-    //         label="State"
-    //         name="state"
-    //         value={formData.state}
-    //         onChange={handleChange}
-    //         margin="normal"
-    //       >
-    //         <MenuItem value="California">California</MenuItem>
-    //         <MenuItem value="Texas">Texas</MenuItem>
-    //         <MenuItem value="New York">New York</MenuItem>
-    //       </Select>
-    //       <Select
-    //       sx={{marginX:'10px'}}
-    //         label="Role"
-    //         name="role"
-    //         value={formData.role}
-    //         onChange={handleChange}
-    //         margin="normal"
-    //       >
-    //         <MenuItem value="Admin">Admin</MenuItem>
-    //         <MenuItem value="User">User</MenuItem>
-    //       </Select>
-    //     {/* </Grid> */}
-    //     <Button type="submit" variant="contained" color="primary">
-    //       Submit
-    //     </Button>
-    //   </Grid>
-    // </form>
+    
   )
 }

@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import Provider from '../products/Provider'
-import Product from '../products/Product'
-import { DeleteEmployee } from '../employees/DeleteEmployee'
-import { EmployeeForm } from '../employees/EmployeeForm'
+import { ProductWrapper } from '../products/ProductWrapper'
 import { useSelector } from 'react-redux'
-import { fetchAllEmployees } from '../../redux/employeeSlice'
+import { EmployeeWrapper } from '../employees/EmployeeWrapper'
+import { EmployeesTable } from '../employees/Table'
+import { TableProducts } from '../products/Table'
 
 export const Wrapper = () => {
   const [selectedOption, setselectedOption] = useState('')
@@ -12,24 +11,23 @@ export const Wrapper = () => {
 
   useEffect(() => {
     setselectedOption(option)
-    fetchAllEmployees()
-  }, [option, dispatchEvent])
+  }, [option])
 
   let component
   switch (selectedOption) {
     case 'Agregar producto':
-      component = <Product />
+      component = <ProductWrapper />
       break
     case 'Tabla de empleados':
-      component = <Provider />
+      component = <EmployeesTable />
       break
     case 'Agregar empleado':
-      component = <EmployeeForm />
+      component = <EmployeeWrapper />
       break
-    case 'Inventario':
-      component = <h1>esto es inventario</h1>
+    case 'Tabla de inventario':
+      component = <TableProducts />
       break
-      case 'Agregar cliente':
+    case 'Agregar cliente':
       component = <h1>Agregar cliente</h1>
       break
     case 'Tabla de clientes':

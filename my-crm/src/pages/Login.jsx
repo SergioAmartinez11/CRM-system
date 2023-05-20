@@ -1,11 +1,9 @@
 import { Grid, Typography } from '@mui/material'
 import LoginForm from '../components/login/LoginForm'
 import SvgBanner from '../components/svg/SvgBanner'
-import React, { useEffect } from 'react'
+import React from 'react'
 
 export const Login = () => {
-
- 
   return (
     <>
       <SvgBanner width="100%" height="40vh" />

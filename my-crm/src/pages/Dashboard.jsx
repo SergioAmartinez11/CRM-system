@@ -13,6 +13,7 @@ import { logout } from '../redux/authSlice'
 import { useNavigate } from 'react-router'
 import { SvgFooter } from '../components/svg/SvgFooter'
 import { Wrapper } from '../components/dashboard/Wrapper'
+import theme from '../utils/theme'
 
 export const Dashboard = () => {
   const dispatch = useDispatch()
@@ -30,10 +31,9 @@ export const Dashboard = () => {
       <Grid
         container
         sx={{
-          minHeight:'100vh',
+          minHeight: '100vh',
           position: 'fixed',
           top: 0,
-          
         }}
       >
         <Grid
@@ -49,13 +49,13 @@ export const Dashboard = () => {
           }}
         >
           <Typography
-            variant="gradientText"
             sx={{
               fontSize: '26px',
               fontWeight: 'bold',
               textAlign: 'center',
               letterSpacing: '2px',
               marginBottom: '3rem',
+              color: theme.palette.primary.main,
             }}
           >
             {'My-CRM'}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Accordion from '@mui/material/Accordion'
 import AccordionSummary from '@mui/material/AccordionSummary'
 import AccordionDetails from '@mui/material/AccordionDetails'
@@ -11,7 +11,7 @@ import { dashboardState } from '../../redux/common'
 export default function SimpleAccordion({ data }) {
   const dispatch = useDispatch()
   const handleClick = (option) => {
-    dispatch(dashboardState({option}));
+    dispatch(dashboardState({ option }))
   }
 
   return (
@@ -20,17 +20,15 @@ export default function SimpleAccordion({ data }) {
         elevation={0}
         sx={{
           borderRadius: '5px',
-          color: theme.palette.primary.pink,
+          color: theme.palette.primary.main,
           marginY: '1rem',
         }}
       >
         <AccordionSummary
-          expandIcon={
-            <ExpandMoreIcon sx={{ color: theme.palette.primary.pink }} />
-          }
+          expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
           id="panel1a-header"
-          color={theme.palette.primary.main}
+          color={theme.palette.secondary.lightGray}
         >
           <Typography fontWeight={'bold'}>{data.header}</Typography>
         </AccordionSummary>
@@ -41,7 +39,7 @@ export default function SimpleAccordion({ data }) {
               sx={{ cursor: 'pointer' }}
               onClick={() => handleClick(element.label)}
             >
-              <Typography color={theme.palette.primary.blue}>
+              <Typography color={theme.palette.secondary.gray}>
                 {element.label}
               </Typography>
             </AccordionDetails>

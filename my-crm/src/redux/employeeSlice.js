@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
+import { getAllEmployees } from '../utils/api/employee'
 
 const initialState = {
   employees: [],
@@ -14,8 +15,8 @@ export const employeeSlice = createSlice({
   initialState,
   reducers: {
     updateEmployees: (state, action) => {
-      const { payload } = action.payload
-      state.employees = payload
+      const { newList } = action.payload
+      state.employees = newList
     },
   },
 })
@@ -24,16 +25,12 @@ export const { updateEmployees } = employeeSlice.actions
 
 export const fetchAllEmployees = () => async (dispatch) => {
   try {
-    const response = await axios
-      .get(`${baseURL}/employee/`, {})
-      .then((response) => {
-        return response.data
-      })
-    //const { token } = response.data
-    //dispatch(updateEmployees({ token }))
-    console.log(response)
+    const list = await getAllEmployees()
+    let newList = list.reverse();
+    dispatch(updateEmployees({ newList }))
   } catch (error) {
     //dispatch(loginFailure(error.code))
+    console.log(error)
   }
 }
 
