@@ -6,7 +6,7 @@ import CustomAccordion from '../components/common/CustomAccordion'
 import {
   employees,
   inventory,
-  marketing,
+  contact,
   config,
 } from '../utils/constants/accordion'
 import { logout } from '../redux/authSlice'
@@ -14,6 +14,7 @@ import { useNavigate } from 'react-router'
 import { SvgFooter } from '../components/svg/SvgFooter'
 import { Wrapper } from '../components/dashboard/Wrapper'
 import theme from '../utils/theme'
+
 
 export const Dashboard = () => {
   const dispatch = useDispatch()
@@ -62,7 +63,7 @@ export const Dashboard = () => {
           </Typography>
           <CustomAccordion data={employees} />
           <CustomAccordion data={inventory} />
-          <CustomAccordion data={marketing} />
+          <CustomAccordion data={contact} />
           <CustomAccordion data={config} />
           <Box
             marginTop={'auto'}

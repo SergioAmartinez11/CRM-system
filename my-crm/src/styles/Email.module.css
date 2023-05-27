@@ -1,0 +1,10 @@
+.container{
+    width: 500px;
+    height: 500px;
+    justify-content: left;
+}
+
+.form{
+    width: 100%;
+    border-radius: 5px;
+}
