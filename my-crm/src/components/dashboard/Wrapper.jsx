@@ -4,6 +4,8 @@ import { useSelector } from 'react-redux'
 import { EmployeeWrapper } from '../employees/EmployeeWrapper'
 import { EmployeesTable } from '../employees/Table'
 import { TableProducts } from '../products/Table'
+import { EmailForm } from '../email/emailWrapper'
+import { Tree } from '../Tree'
 
 export const Wrapper = () => {
   const [selectedOption, setselectedOption] = useState('')
@@ -14,7 +16,9 @@ export const Wrapper = () => {
   }, [option])
 
   let component
+
   switch (selectedOption) {
+    
     case 'Agregar producto':
       component = <ProductWrapper />
       break
@@ -27,12 +31,15 @@ export const Wrapper = () => {
     case 'Tabla de inventario':
       component = <TableProducts />
       break
-    case 'Agregar cliente':
-      component = <h1>Agregar cliente</h1>
+    case 'Email':
+      component = <EmailForm/>
       break
     case 'Tabla de clientes':
       component = <h1>esto es tabla de clientes</h1>
       break
+    case 'Mapa del sitio':
+      component = <Tree/>
+      break;
     default:
       component = null
   }

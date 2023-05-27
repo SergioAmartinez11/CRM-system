@@ -18,5 +18,10 @@ export const marketing = {
 
 export const config = {
   header: 'Configuracion',
-  options: [{ label: 'Cerrar sesion' }],
+  options: [{label:'Mapa del sitio'},{ label: 'Cerrar sesion' }],
+}
+
+export const contact = {
+  header: 'Contacto',
+  options: [{label:'Email'}]
 }
